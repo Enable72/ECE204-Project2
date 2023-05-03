@@ -56,3 +56,4 @@ clean_summary <- clean_summary %>%
 
 clean_summary$Nonsyno = clean_summary$Nonsense_Mutation + clean_summary$Missense_Mutation + clean_summary$Splice_Site
 clean_summary$dnds =clean_summary$Nonsyno / clean_summary$Silent 
+clean_sum <- clean_summary[!clean_summary$dnds == "Inf", ]
