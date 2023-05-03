@@ -55,4 +55,4 @@ clean_summary <- clean_summary %>%
   pivot_wider(names_from = Variant_Classification, values_from = count, values_fill = 0)
 
 clean_summary$Nonsyno = clean_summary$Nonsense_Mutation + clean_summary$Missense_Mutation + clean_summary$Splice_Site
-clean_summary$dnds = clean_summary$Silent / clean_summary$Nonsyno
+clean_summary$dnds =clean_summary$Nonsyno / clean_summary$Silent 
