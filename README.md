@@ -9,7 +9,7 @@ R , C++, Python, Excel
 library(GenomicFeatures)
 
 if (!requireNamespace("BiocManager", quietly = TRUE)) <br />
-    <space><space> install.packages("BiocManager") <br />
+    >> install.packages("BiocManager") <br />
 BiocManager::install("biomaRt")
 
 library(openxlsx) <br />
