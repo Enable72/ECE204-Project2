@@ -6,15 +6,15 @@ This report delves into analysis of Head and neck squamous cancer.
 R , C++, Python, Excel
 
 ## Packages and installation:
-ibrary(GenomicFeatures)
+library(GenomicFeatures)
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+if (!requireNamespace("BiocManager", quietly = TRUE)) <br />
+    install.packages("BiocManager") <br />
 BiocManager::install("biomaRt")
 
-library(openxlsx)
-install.packages("org.Hs.eg.db")
-install.packages("dataset")
+library(openxlsx) <br />
+install.packages("org.Hs.eg.db") <br />
+install.packages("dataset") <br />
 library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 
 ## Description
