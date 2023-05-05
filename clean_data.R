@@ -57,3 +57,12 @@ clean_summary <- clean_summary %>%
 clean_summary$Nonsyno = clean_summary$Nonsense_Mutation + clean_summary$Missense_Mutation + clean_summary$Splice_Site
 clean_summary$dnds =clean_summary$Nonsyno / clean_summary$Silent 
 clean_sum <- clean_summary[!clean_summary$dnds == "Inf", ]
+
+# t test z test
+library(BSDA)
+dnds_res = clean_summary$Nonsyno / clean_summary$Silent
+dnds_res <- dnds_res[!is.na(dnds_res) & !is.infinite(dnds_res)]
+dnds_ref = (sel_cv$n_mis + sel_cv$n_non + sel_cv$n_spl) / sel_cv$n_syn 
+dnds_ref <- dnds_ref[!is.na(dnds_ref) & !is.infinite(dnds_ref)]
+t.test(dnds_res, dnds_ref)
+z.test(dnds_res, dnds_ref, sigma.x=sd(dnds_res), sigma.y=sd(dnds_ref))
