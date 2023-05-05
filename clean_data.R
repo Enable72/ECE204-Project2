@@ -128,10 +128,16 @@ count_neutral
 count_pos = sum(clean_summary$dnds > 1)
 count_pos
 
-
+                     
+                     
+# only use top 500 most mutated genes
+clean_summary$most_mutated <- clean_summary$Missense_Mutation + clean_summary$Nonsense_Mutation +clean_summary$Silent  + clean_summary$Splice_Site
+clean_resampled <- clean_summary %>% arrange(desc(most_mutated)) %>% head(500)
+sel_cv = sel_cv[sel_cv$gene_name %in% clean_resampled$Hugo_Symbol,]
+                     
 # t test z test
 library(BSDA)
-dnds_res = clean_summary$Nonsyno / clean_summary$Silent
+dnds_res = clean_resampled$dnds
 dnds_res <- dnds_res[!is.na(dnds_res) & !is.infinite(dnds_res)]
 dnds_ref = (sel_cv$n_mis + sel_cv$n_non + sel_cv$n_spl) / sel_cv$n_syn 
 dnds_ref <- dnds_ref[!is.na(dnds_ref) & !is.infinite(dnds_ref)]
